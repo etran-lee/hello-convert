@@ -6,7 +6,6 @@ type Lang struct {
 	output string
 }
 
-var English = &Lang{keys: []string{
-	"English", "english", "Eng", "eng"},
+var English = &Lang{keys: []string{"English", "english", "Eng", "eng"},
 	emoji:  "\\U+1F1FA",
 	output: "Hello"}
