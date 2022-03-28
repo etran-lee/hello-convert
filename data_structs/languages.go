@@ -17,7 +17,7 @@ func ListLanguages() {
 }
 
 func KeyCheck(key string) languageOutput {
-	for i := 0; i < 10; i++ {
+	for i := 0; i < len(languageList); i++ {
 		if caseInsensitiveHasPrefix(languageList[i].Language, key) {
 			return languageList[i]
 		}
