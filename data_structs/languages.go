@@ -1,21 +1,28 @@
 package languages
 
 import (
+	"fmt"
 	"strings"
 )
 
-type LanguageOutput struct {
+type languageOutput struct {
 	Language string
 	Output   string
 }
 
-func KeyCheck(key string) LanguageOutput {
+func ListLanguages() {
+	for i := 0; i < len(languageList); i++ {
+		fmt.Println(languageList[i].Language)
+	}
+}
+
+func KeyCheck(key string) languageOutput {
 	for i := 0; i < 10; i++ {
-		if caseInsensitiveHasPrefix(LanguageList[i].Language, key) {
-			return LanguageList[i]
+		if caseInsensitiveHasPrefix(languageList[i].Language, key) {
+			return languageList[i]
 		}
 	}
-	return LanguageOutput{Output: "No language found"}
+	return languageOutput{Output: "No language found"}
 }
 
 func caseInsensitiveHasPrefix(s, substr string) bool {
@@ -24,7 +31,7 @@ func caseInsensitiveHasPrefix(s, substr string) bool {
 }
 
 // Language Data
-var LanguageList = []LanguageOutput{
+var languageList = []languageOutput{
 	{Language: "Chinese", Output: "你好"},
 	{Language: "Spanish", Output: "Hola"},
 	{Language: "English", Output: "Hello"},

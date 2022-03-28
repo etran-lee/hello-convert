@@ -25,7 +25,7 @@ func main() {
 	}
 
 	if listCmd.Parsed() {
-		fmt.Println("listed")
+		languages.ListLanguages()
 		os.Exit(1)
 	}
 
@@ -38,5 +38,6 @@ func main() {
 		fmt.Printf("%s", languages.KeyCheck(*lang).Output)
 		os.Exit(1)
 	}
+
 	flag.PrintDefaults()
 }
