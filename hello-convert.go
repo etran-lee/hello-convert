@@ -4,6 +4,8 @@ import (
 	"flag"
 	"fmt"
 	"os"
+
+	languages "github.com/etran-lee/hello-convert/data_structs"
 )
 
 func main() {
@@ -28,10 +30,13 @@ func main() {
 	}
 
 	if flag.Parsed() {
-		switch lang {
-		default:
-			fmt.Printf("%s", languages.English)
+		if len(*lang) < 3 {
+			fmt.Print("must input a language key longer than 3 characters")
+			os.Exit(1)
 		}
+
+		fmt.Printf("%s", languages.KeyCheck(*lang).Output)
+		os.Exit(1)
 	}
 	flag.PrintDefaults()
 }
