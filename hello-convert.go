@@ -9,10 +9,10 @@ import (
 )
 
 func main() {
-	//subcommands
+	// subcommands
 	listCmd := flag.NewFlagSet("list", flag.ExitOnError)
 
-	//flags
+	// flags
 	lang := flag.String("lang", "", "choose a language to say 'hello', you can list available languages by using the 'list' subcommand (example: 'hello-convert list')")
 
 	if len(os.Args) > 1 {
