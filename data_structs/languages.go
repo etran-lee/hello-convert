@@ -12,6 +12,10 @@ type languageOutput struct {
 
 func ListLanguages() {
 	for i := 0; i < len(languageList); i++ {
+		if i+1 == len(languageList) {
+			fmt.Print(languageList[i].Language)
+			return
+		}
 		fmt.Println(languageList[i].Language)
 	}
 }
@@ -22,7 +26,7 @@ func KeyCheck(key string) languageOutput {
 			return languageList[i]
 		}
 	}
-	return languageOutput{Output: "No language found"}
+	return languageOutput{Language: "Error", Output: "No language found"}
 }
 
 func caseInsensitiveHasPrefix(s, substr string) bool {
@@ -30,7 +34,7 @@ func caseInsensitiveHasPrefix(s, substr string) bool {
 	return strings.HasPrefix(s, substr)
 }
 
-// Language Data
+// language data
 var languageList = []languageOutput{
 	{Language: "Chinese", Output: "你好"},
 	{Language: "Spanish", Output: "Hola"},
