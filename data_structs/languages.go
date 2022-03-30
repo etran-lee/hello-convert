@@ -10,13 +10,34 @@ type languageOutput struct {
 	Output   string
 }
 
-func ListLanguages() {
+func ListAllLanguages() {
 	for i := 0; i < len(languageList); i++ {
 		if i+1 == len(languageList) {
 			fmt.Print(languageList[i].Language)
 			return
 		}
 		fmt.Println(languageList[i].Language)
+	}
+}
+
+func ListLanguages(page int) {
+	page -= 1
+
+	perPage := 10 // '10' is how many languages will be printed per page
+	index := page * perPage
+	endIndex := index + perPage
+
+	if endIndex > len(languageList) {
+		endIndex = len(languageList)
+	}
+
+	for i := index; i < endIndex; i++ {
+		fmt.Println(languageList[i].Language)
+		if i+1 == endIndex {
+			lastPage := len(languageList) / perPage
+			fmt.Printf("< Page %d of %d >", page+1, lastPage+1)
+			return
+		}
 	}
 }
 

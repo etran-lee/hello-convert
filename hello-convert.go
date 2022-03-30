@@ -9,11 +9,13 @@ import (
 )
 
 func main() {
-	// subcommands
+	// list sub command + flags
 	listCmd := flag.NewFlagSet("list", flag.ExitOnError)
+	listPage := listCmd.Int("page", 1, "list page [1-7]")
+	listAll := listCmd.Bool("all", false, "list all available languages")
 
-	// flags
-	lang := flag.String("lang", "", "choose a language to say 'hello', you can list available languages by using the 'list' subcommand (example: 'hello-convert list')")
+	// default flags
+	lang := flag.String("lang", "", "choose a language to say 'hello' in; you can list available languages by using the 'list' subcommand (example: 'hello-convert list')")
 
 	if len(os.Args) > 1 {
 		switch os.Args[1] {
@@ -25,7 +27,11 @@ func main() {
 	}
 
 	if listCmd.Parsed() {
-		languages.ListLanguages()
+		if *listAll {
+			languages.ListAllLanguages()
+			os.Exit(1)
+		}
+		languages.ListLanguages(*listPage)
 		os.Exit(1)
 	}
 
