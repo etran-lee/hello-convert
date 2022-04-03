@@ -1,6 +1,6 @@
 # hello-convert
 
-This is my first CLI tool written in GoLang. It's a simple utility that will output the phrase 'Hello' in most languages.
+This is my first CLI tool written in GoLang. It's a simple utility that will output the phrase 'Hello' in most common languages.
 
 ## Screenshots
 The '-lang=[language]' flag is used to output a greeting in the given language
